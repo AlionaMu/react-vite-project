@@ -1,0 +1,28 @@
+// @import "../../assets/theme-variables.scss";
+// @import "../../assets/colors.scss";
+$bg-color: #6098ba;
+$header-color: #182f4b;
+$new-note: #182f4b;
+$font-color: #c9d8e6;
+$button-color: #266396;
+$font-button: #c7a729;
+$note-color: #266396;
+
+.header {
+  padding: 20px 30px;
+  box-shadow: 0 0 20px 0 rgb(0 0 0 / 10%);
+  display: flex;
+  justify-content: space-around;
+  background: $header-color;
+  color: $font-color;
+  //   color: themed("font-color");
+  // @include themify($themes) {
+  //   background: themed("header-color");
+  //   color: themed("font-color");
+  // }
+
+  &__title:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+// @import "../src/assets/colors.scss";
+// @import "../src/assets/mixins.scss";
+// @import "../src/assets/theme-variables.scss";
+
+$bg-color: #e5e5e5;
+
+$hunter-green: #3e5641ff;
+$button-color: #a24936ff;
+$button-hover: #d36135ff;
+$charleston-green: #282b28ff;
+$green-sheen: #83bca9ff;
+
+$turquoise-green: #b8d8baff;
+$pale-spring-bud: #d9dbbcff;
+$bisque: #fcddbcff;
+$mauvelous: #ef959dff;
+$deep-taupe: #69585fff;
+
+$bg-color: #6098ba;
+$header-color: #182f4b;
+$new-note: #182f4b;
+$font-color: #c9d8e6;
+$button-color: #266396;
+$font-button: #c7a729;
+$note-color: #266396;
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  min-width: 100vw;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  // @include themify($themes) {
+  //   color: themed("font-color");
+  // }
+}
+
+// .App > * {
+//   // @include themify($themes) {
+//   //   color: themed("font-color");
+//   // }
+// }
+
+.button {
+  box-shadow: 0px 3px 5px rgb(0 0 0 / 20%), 0px 1px 18px rgb(0 0 0 / 12%),
+    0px 6px 10px rgb(0 0 0 / 14%);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  text-decoration: none;
+  // @include themify($themes) {
+  //   background: themed("button-color");
+  //   color: themed("font-button");
+  // }
+  border: none;
+
+  &:hover {
+    // @include themify($themes) {
+    //   background: themed("note-color");
+    // }
+  }
+}
+
+.button_theme {
+  cursor: pointer;
+  background-color: transparent;
+  border: transparent;
+}
+
+.button_lang {
+  margin: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  // @include themify($themes) {
+  //   color: themed("font-color");
+  // }
+}
+
+.main {
+  padding: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: calc(100vh - 159px);
+  // @include smart {
+  //   height: auto;
+  //   flex-direction: column;
+  //   align-items: center;
+  // }
+  // @include themify($themes) {
+  //   background: themed("bg-color");
+  // }
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  // max-width: 350px;
+}
+
+.highlight {
+  color: red;
+}
