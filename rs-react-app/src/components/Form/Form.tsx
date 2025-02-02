@@ -1,6 +1,7 @@
 import { useState } from "react";
-// import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import "./Form.scss";
+import FetchService from "../../API/FetchService";
 // import { HashService } from "../../services/HashService";
 // import { FormPropsType, Note } from "../../types";
 // import { create, setTags, setTagsAmount } from "../../store/notesListSlice";
@@ -18,13 +19,13 @@ export const defaultValues: FormInfo = {
 export const Form = () => {
   // const dispatch = useDispatch();
   const [disabled, setDisabled] = useState(true);
-  // const {
-    // register,
-    // handleSubmit,
+  const {
+    register,
+    handleSubmit,
   //   formState: { errors },
-  // } = useForm<FormInfo>({
-  //   defaultValues,
-  // });
+  } = useForm<FormInfo>({
+    defaultValues,
+  });
 
   // const createNote = (text: string, tags: string[]) => {
     // const newNote: Note = {
@@ -37,32 +38,39 @@ export const Form = () => {
     // dispatch(create(newNote));
   // };
 
-  // const onSubmit: SubmitHandler<FormInfo> = (data) => {
+  const onSubmit: SubmitHandler<FormInfo> = (data) => {
+    console.log('DATA', data)
+    FetchService.getPosts(data.note).then((res) => {
+          // props.setCardsList([...res.items]);
+      // props.setLoading(false);
+       console.log(res)
+        })
+   
   //   const tags = HashService.findByHash(data.note);
   //   createNote(data.note, tags);
   //   dispatch(setTags());
   //   dispatch(setTagsAmount());
-  // };
+  };
 
-  // const setButtonAble = () => {
-  //   setDisabled(false);
-  // };
+  const setButtonAble = () => {
+    setDisabled(false);
+  };
   return (
     <form
       className="form"
-      // onSubmit={handleSubmit(onSubmit)}
-      // onChange={setButtonAble}
+      onSubmit={handleSubmit(onSubmit)}
+      onChange={setButtonAble}
     >
       {/* <label className="form__label">{props.t("form.title")}:</label> */}
       <input
         type="text"
-        // {...register("note", {
-        //   required: true,
-        //   minLength: {
-        //     value: 3,
-        //     message: "This input must exceed 3 characters",
-        //   },
-        // })}
+        {...register("note", {
+          required: true,
+          minLength: {
+            value: 3,
+            message: "This input must exceed 3 characters",
+          },
+        })}
         className="form__input"
         placeholder="Enter text"
       />
