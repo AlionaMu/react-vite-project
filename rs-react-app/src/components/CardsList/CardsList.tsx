@@ -1,6 +1,7 @@
 // import { CardsListPropsType, Note } from "../../types";
-import "./CardsList.scss";
 import { Card } from "../Card/Card";
+import "./CardsList.scss";
+import { StorageService } from "../../services/StorageService";
 // export const CardsList = (props: CardsListPropsType) => {
 export const CardsList = () => {
   // const res = props.filter.length
@@ -10,16 +11,17 @@ export const CardsList = () => {
   //       )
   //     )
   //   : props.list;
-
+  const res = StorageService.getCards();
+  console.log('RESRES', res)
   return (
     <section className="cards-list">
-      {/* {res ? (
-        res.map((note: Note) => {
-          return <Card note={note} key={note.key} t={t}></Card>;
+      {res ? (
+        res.map((note: any) => {
+          return <Card note={note} key={note.etag}></Card>;
         })
-      ) : ( */}
+      ) : (
         <div>NO CARDS</div>
-      {/* )} */}
+       )} 
     </section>
   );
 };

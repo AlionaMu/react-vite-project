@@ -19,7 +19,7 @@ export enum Ebutton {
   Save = "save",
 }
 
-export const Card = () => {
+export const Card = (props:any) => {
 // export const Card = (props: CardPropsType) => {
 //   const notesList = useSelector((state: RootState) => state.notesList);
 //   const index = NoteService.findIndex(props.note.id, notesList.notesList);
@@ -27,67 +27,19 @@ export const Card = () => {
   // const isEditMode = notesList.notesList[index].isEditMode;
   // const dispatch = useDispatch();
   // const [inputValue, setInputValue] = useState(props.note.text);
-  const [button, setButton] = useState(Ebutton.Edit);
-
-  // const switchClick = () => {
-  //   if (button === Ebutton.Edit) {
-  //     setButton(Ebutton.Save);
-  //     dispatch(toggleEditMode(props.note.id));
-  //   } else {
-  //     const tags = HashService.findByHash(inputValue);
-  //     dispatch(editNote({ id: props.note.id, text: inputValue, tags: tags }));
-  //     dispatch(setTags());
-  //     dispatch(setTagsAmount());
-  //     setButton(Ebutton.Edit);
-  //     dispatch(toggleEditMode(props.note.id));
-  //   }
-  // };
-
-  // const deleteNote = () => {
-  //   dispatch(remove(props.note.id));
-  //   dispatch(setTags());
-  //   dispatch(setTagsAmount());
-  // };
-
-  // const setNoteNotEditable = () => {
-  //   setButton(Ebutton.Edit);
-  //   dispatch(toggleEditMode(props.note.id));
-  // };
-
-  // const clickNoteHandler = (e: React.MouseEvent) => {
-  //   const target = e.target as HTMLInputElement;
-  //   if (isEditMode && target.className === "tags-list_card")
-  //     setNoteNotEditable();
-  // };
-
+  const publishedAt = new Date(props.note.snippet.publishedAt).toLocaleString('ru');
+  // const state = useSelector((state: RootState) => state.cardsList)
+  console.log('PROPS', props)
   return (
-    <div
-      className="note-card"
-      // onClick={(e: React.MouseEvent) => clickNoteHandler(e)}
-    >
-      {/* {!isEditMode ? (
-        <div className="note-card__title">{inputValue}</div>
-      ) : (
-        <input
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-        />
-      )} */}
-       {/* <CardTagsList items={}></CardTagsList> */}
-      {/* <CardTagsList items={props.note.tags}></CardTagsList> */}
-      <div className="note-card__button-container">
-        <button
-          className="button note-card__button"
-          // onClick={() => switchClick()}
-        >
-          {button}
-        </button>
-        {/* <button className="button note-card__button" onClick={deleteNote}>
-          {props.t("note.delete")}
-        </button> */}
-        <button className="button note-card__button">
-          
-        </button>
+  
+    <div className='card' id={props.note.snippet.channelId}>
+      <div className='card__contain'>
+        <span className='card__text_title'><b>Video Title: </b>{props.note.snippet.title}</span>
+      </div>
+      <div className='card__contain'>
+        <span className='card__text_species'><b>Channel Title: </b>{props.note.snippet.channelTitle}</span>
+        <span className='card__text_title'><b>Channel Title: </b>{props.note.snippet.ChannelTitle}</span>
+        <span className='card__text_title'><b>Published Ate: </b>{publishedAt}</span>
       </div>
     </div>
   );

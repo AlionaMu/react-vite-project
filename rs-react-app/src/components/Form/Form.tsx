@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import "./Form.scss";
 import FetchService from "../../API/FetchService";
+import { StorageService } from "../../services/StorageService";
 // import { HashService } from "../../services/HashService";
 // import { FormPropsType, Note } from "../../types";
 // import { create, setTags, setTagsAmount } from "../../store/notesListSlice";
@@ -43,8 +44,10 @@ export const Form = () => {
     FetchService.getPosts(data.note).then((res) => {
           // props.setCardsList([...res.items]);
       // props.setLoading(false);
-       console.log(res)
-        })
+      console.log(res)
+      StorageService.setCards([...res.items])
+    })
+    
    
   //   const tags = HashService.findByHash(data.note);
   //   createNote(data.note, tags);
